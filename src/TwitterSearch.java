@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.time.format.DateTimeFormatter;
 @SuppressWarnings("serial")
 
-public class DefaultHomepage extends JFrame
+public class TwitterSearch extends JFrame
 {
-	public DefaultHomepage() {
+	public TwitterSearch() {
 		//JFRAME
 		JFrame frame = new JFrame("Default Homepage");
         frame.setPreferredSize(new Dimension(400,300));
@@ -78,7 +78,7 @@ public class DefaultHomepage extends JFrame
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
             	Database.hardcodedData();
-            	new DefaultHomepage();
+            	new TwitterSearch();
 ;            }
         });
     }

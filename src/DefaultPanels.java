@@ -209,9 +209,9 @@ public class DefaultPanels extends JFrame {
 				LocalDate dateFrom = null;
 				LocalDate dateTo = null;
 				if (df.length() != 0)
-			    	dateFrom = LocalDate.parse(df, DefaultHomepage.formatter);
+			    	dateFrom = LocalDate.parse(df, TwitterSearch.formatter);
 			    if (dt.length() != 0)
-			    	dateTo = LocalDate.parse(dt, DefaultHomepage.formatter);
+			    	dateTo = LocalDate.parse(dt, TwitterSearch.formatter);
 			    if (dateFrom != null && dateTo != null) {
 			    	if (dateTo.isBefore(dateFrom)) 
 			    		JOptionPane.showMessageDialog(panel, "Date To cannot be before Date From, please search again");
