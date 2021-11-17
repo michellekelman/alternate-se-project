@@ -16,7 +16,7 @@ public class DefaultController {
 			for (String tag: r.getTags())
 				res += tag + " ";
 		}
-	    res += "\nDate Posted: " + DefaultHomepage.formatter.format(r.getDatePosted());
+	    res += "\nDate Posted: " + TwitterSearch.formatter.format(r.getDatePosted());
 	    return res;
 	}
 	
