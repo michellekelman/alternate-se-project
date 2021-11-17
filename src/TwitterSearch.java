@@ -23,8 +23,13 @@ public class TwitterSearch extends JFrame
 		welcomeLabel.setBounds(120, 10, 300, 20);
 		homepagePanel.add(welcomeLabel);
 		
+		ImageIcon logo = new ImageIcon("tslogo.png");
+		JLabel logoLabel = new JLabel(logo);
+		logoLabel.setBounds(150, 15, 100, 100);
+		homepagePanel.add(logoLabel);
+		
 		JButton cButton = new JButton("Create Account");
-		cButton.setBounds(125, 50, 150, 20);
+		cButton.setBounds(125, 110, 150, 20);
 		homepagePanel.add(cButton);
 		cButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -37,7 +42,7 @@ public class TwitterSearch extends JFrame
 		});
 		
 		JButton lButton = new JButton("Login");
-		lButton.setBounds(125, 100, 150, 20);
+		lButton.setBounds(125, 140, 150, 20);
 		homepagePanel.add(lButton);
 		lButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -50,7 +55,7 @@ public class TwitterSearch extends JFrame
 		});
 		
 		JButton sButton = new JButton("Search");
-		sButton.setBounds(125, 150, 150, 20);
+		sButton.setBounds(125, 170, 150, 20);
 		homepagePanel.add(sButton);
 		sButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
