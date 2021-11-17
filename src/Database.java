@@ -28,7 +28,7 @@ public class Database {
     	String[] pTags = {"test", "post1"};
     	p.setTags(pTags);
     	p.setUsername("testuser1");
-    	LocalDate pDate = LocalDate.parse("01/01/2020", Default.formatter);
+    	LocalDate pDate = LocalDate.parse("01/01/2020", DefaultHomepage.formatter);
 	    p.setDatePosted(pDate);
 	    testuser1.addPost(p);
     	postDB.add(p);
@@ -38,7 +38,7 @@ public class Database {
     	n.setUsername("testuser0");
     	String[] nTags = {"post1"};
     	n.setTags(nTags);
-    	LocalDate nDate = LocalDate.parse("06/01/2020", Default.formatter);
+    	LocalDate nDate = LocalDate.parse("06/01/2020", DefaultHomepage.formatter);
 	    n.setDatePosted(nDate);
 	    testuser0.addPost(n);
     	postDB.add(n);
@@ -48,7 +48,7 @@ public class Database {
     	String[] qTags = {"test", "post2"};
     	q.setTags(qTags);
     	q.setUsername("testuser1");
-    	LocalDate qDate = LocalDate.parse("01/01/2021", Default.formatter);
+    	LocalDate qDate = LocalDate.parse("01/01/2021", DefaultHomepage.formatter);
 	    q.setDatePosted(qDate);
 	    testuser1.addPost(q);
     	postDB.add(q);
