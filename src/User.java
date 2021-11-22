@@ -1,7 +1,8 @@
+/* User class 
+ * includes user information fields and posts
+ * use to add or remove posts from the database
+ */
 import java.util.ArrayList;
-
-// User class includes user information fields and posts
-// Use to add or remove posts from the database
 
 public class User {
     private String name;
@@ -87,17 +88,19 @@ public class User {
         return username;
     }
     
-    // add post to user account and database
+    // add post to user account
     public void addPost(Post post) {
         posts.add(post);
     }
     
-    // remove post from user account and database
+    //remove and edit use cases not implemented for this project
+    
+    // remove post from user account
     public void deletePost(Post post) {
         posts.remove(post);
     }
     
-    // edit post in user account and database
+    // edit post in user account
     public void editPost(Post oldPost , Post newPost) {
         posts.remove(oldPost);
         posts.add(newPost);

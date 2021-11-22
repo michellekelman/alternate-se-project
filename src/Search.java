@@ -1,8 +1,9 @@
+/* Search class 
+ * creates a search object using keywords, authors, and dates
+ * executes search methods to return corresponding posts
+ */
 import java.util.ArrayList;
 import java.time.LocalDate;
-
-// Search class creates a search object using keywords, authors, and dates
-// executes search method to return corresponding posts
 
 public class Search {
     private String[] keywords;
@@ -61,6 +62,7 @@ public class Search {
         return tags;
     }
     
+    // main public search method, calls search methods by search type
     public ArrayList<Post> search(ArrayList<Post> posts) {
     	ArrayList<Post> results = new ArrayList<Post>();
     	results = searchByKeywords(posts);
@@ -71,6 +73,7 @@ public class Search {
         return results;
     }
     
+    // private search method to search for keywords in post content field
     private ArrayList<Post> searchByKeywords(ArrayList<Post> posts) {
     	if (keywords.length == 1 && keywords[0].equals("")) 
     		return posts;
@@ -86,6 +89,7 @@ public class Search {
         return results;
     }
     
+    // private search method to search by author
     private ArrayList<Post> searchByAuthors(ArrayList<Post> posts) {
     	if (authors.length == 1 && authors[0].equals("")) 
     		return posts;
@@ -101,6 +105,7 @@ public class Search {
         return results;
     }
     
+    // private search method to search for tags
     private ArrayList<Post> searchByTags(ArrayList<Post> posts) {
     	if (tags.length == 1 && tags[0].equals("")) 
     		return posts;
@@ -118,6 +123,7 @@ public class Search {
         return results;
     }
     
+    // private search method to search for posts after a given start date
     private ArrayList<Post> searchByDateFrom(ArrayList<Post> posts) {
     	if (dateFrom == null) 
     		return posts;
@@ -130,6 +136,7 @@ public class Search {
         return results;
     }
     
+    // private search method to search for posts before a given end date
     private ArrayList<Post> searchByDateTo(ArrayList<Post> posts) {
     	if (dateTo == null) 
     		return posts;

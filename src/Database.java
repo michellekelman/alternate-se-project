@@ -1,12 +1,21 @@
+/* Database class
+ * Simulates post database and user database using Java ArrayLists
+ * hardcodedData() function populates post database with three sample posts
+ * and user database with two sample user accounts
+ */
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Database {
+	// Simulates post database
 	public static ArrayList<Post> postDB = new ArrayList<Post>();
+	
+	// Simulates user database
 	public static ArrayList<User> userDB = new ArrayList<User>();
 	
+	// Populates databases with sample objects
 	public static void hardcodedData() {
-		// start of hard coded data
+		// testuser0 hardcoded account
     	User testuser0 = new User();
     	testuser0.setUsername("testuser0");
     	testuser0.setPassword("testpassword");
@@ -15,6 +24,7 @@ public class Database {
     	testuser0.setPhoneNumber("1234567890");
     	userDB.add(testuser0);
     	
+    	// testuser1 hardcoded account
     	User testuser1 = new User();
     	testuser1.setUsername("testuser1");
     	testuser1.setPassword("testpassword1");
@@ -23,6 +33,7 @@ public class Database {
     	testuser1.setPhoneNumber("0123456789");
     	userDB.add(testuser1);
     	
+    	// post p hardcoded post
     	Post p = new Post();
     	p.setContent("Hello! This is test post 1");
     	String[] pTags = {"test", "post1"};
@@ -33,6 +44,7 @@ public class Database {
 	    testuser1.addPost(p);
     	postDB.add(p);
     	
+    	// post n hardcoded post
     	Post n = new Post();
     	n.setContent("Hi! This is a hardcoded post");
     	n.setUsername("testuser0");
@@ -43,6 +55,7 @@ public class Database {
 	    testuser0.addPost(n);
     	postDB.add(n);
     	
+    	// post q hardcoded post
     	Post q = new Post();
     	q.setContent("Hola! This is test 2");
     	String[] qTags = {"test", "post2"};
@@ -52,6 +65,5 @@ public class Database {
 	    q.setDatePosted(qDate);
 	    testuser1.addPost(q);
     	postDB.add(q);
-    	// end of hard coded data
 	}
 }
