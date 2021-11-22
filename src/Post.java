@@ -1,7 +1,8 @@
+/* Post class 
+ * includes post objects with content string, tags, date posted, and link
+ * class includes get and set messages for each field
+ */
 import java.time.LocalDate;
-
-// Post class includes post objects with content string, tags, date posted, and link
-// class includes get and set messages for each field
 
 public class Post {
     private String username;

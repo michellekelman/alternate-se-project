@@ -1,3 +1,9 @@
+/* DefaultPanels class
+ * JPanels for 3 default use cases
+ * * Create Account
+ * * Login
+ * * Search
+ */
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -6,10 +12,13 @@ import java.util.ArrayList;
 @SuppressWarnings("serial")
 
 public class DefaultPanels extends JFrame {
+	// Creates an account
 	public static JPanel createAccount(JFrame frame, JPanel homepage) {
+		// instantiate JPanel
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		
+		// create JPanel labels
 		JLabel uLabel = new JLabel("Username:");
 		uLabel.setBounds(10, 30, 150, 20);
 		panel.add(uLabel);
@@ -30,6 +39,7 @@ public class DefaultPanels extends JFrame {
 		pnLabel.setBounds(10, 150, 150, 20);
 		panel.add(pnLabel);
 		
+		// create JPanel text fields
 		JTextField username = new JTextField();
 		username.setBounds(125, 30, 150, 20);
 		panel.add(username);
@@ -50,14 +60,17 @@ public class DefaultPanels extends JFrame {
 		phone.setBounds(125, 150, 150, 20);
 		panel.add(phone);
 		
+		// create JButton for create account
 		JButton cButton = new JButton("Create Account");
 		cButton.setBounds(125, 180, 150, 20);
 		panel.add(cButton);
+		// action listener for create account button
 		cButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String u = username.getText();
 				String p = new String(password.getPassword());
 				User temp = DefaultController.findAccount(u);
+				// check username length, if username already exists, and password length
 				if (u.length() < 8 || u.length() > 20)
 					JOptionPane.showMessageDialog(panel, "Username invalid, must be between 8 and 20 characters, please select a different Username");
 				else if (temp != null)
@@ -65,6 +78,7 @@ public class DefaultPanels extends JFrame {
 				else if (p.length() < 8 || p.length() > 20)
 					JOptionPane.showMessageDialog(panel, "Password invalid, must be between 8 and 20 characters, please select a different Password");
 				else {
+					// create new user and display account information
 					User tempUser = new User();
 					tempUser.setUsername(u);
 				    tempUser.setPassword(p);
@@ -80,6 +94,7 @@ public class DefaultPanels extends JFrame {
 				}
 			}
 		});
+		// create return to homepage button
 		JButton rButton = new JButton("Return to Homepage");
 		rButton.setBounds(100, 210, 200, 20);
 		panel.add(rButton);
@@ -95,10 +110,13 @@ public class DefaultPanels extends JFrame {
 		return panel;
 	}
 	
+	// Login to an account
 	public static JPanel login(JFrame frame, JPanel homepage) {
+		// instantiate JPanel
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		
+		// create JPanel labels
 		JLabel uLabel = new JLabel("Username:");
 		uLabel.setBounds(10, 30, 150, 20);
 		panel.add(uLabel);
@@ -107,6 +125,7 @@ public class DefaultPanels extends JFrame {
 		pLabel.setBounds(10, 60, 150, 20);
 		panel.add(pLabel);
 		
+		// create JPanel text fields
 		JTextField username = new JTextField();
 		username.setBounds(125, 30, 150, 20);
 		panel.add(username);
@@ -115,19 +134,23 @@ public class DefaultPanels extends JFrame {
 		password.setBounds(125, 60, 150, 20);
 		panel.add(password);
 		
+		// create login button
 		JButton lButton = new JButton("Login");
 		lButton.setBounds(125, 90, 150, 20);
 		panel.add(lButton);
+		// action listener for login button
 		lButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String u = username.getText();
 				String p = new String(password.getPassword());
 				User temp = DefaultController.findAccount(u);
+				// check if account exists and validate password
 				if (temp == null)
 					JOptionPane.showMessageDialog(panel, "Username not found, please login again");
 				else if (!temp.getPassword().equals(p)) 
 					JOptionPane.showMessageDialog(panel, "Password is invalid, please login again");
 				else {
+					// direct user to user homepage menu
 					JOptionPane.showMessageDialog(panel, "Login Successful");
 					panel.setVisible(false);
 					JPanel userHomepage = UserHomepage.userHomepage(frame, homepage, temp);
@@ -137,6 +160,7 @@ public class DefaultPanels extends JFrame {
 				}
 			}
 		});
+		// create return to homepage button
 		JButton rButton = new JButton("Return to Homepage");
 		rButton.setBounds(100, 120, 200, 20);
 		panel.add(rButton);
@@ -152,10 +176,13 @@ public class DefaultPanels extends JFrame {
 		return panel;
 	}
 	
+	// Search for posts based on specific fields
 	public static JPanel search(JFrame frame, JPanel homepage) {
+		// instantiate JPanel
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		
+		// create JPanel labels
 		JLabel kLabel = new JLabel("Keywords:");
 		kLabel.setBounds(10, 10, 150, 20);
 		panel.add(kLabel);
@@ -176,6 +203,7 @@ public class DefaultPanels extends JFrame {
 		dtLabel.setBounds(10, 130, 150, 40);
 		panel.add(dtLabel);
 		
+		// create JPanel text fields
 		JTextField keywords = new JTextField();
 		keywords.setBounds(125, 10, 150, 20);
 		panel.add(keywords);
@@ -196,9 +224,11 @@ public class DefaultPanels extends JFrame {
 		dateTo.setBounds(125, 150, 150, 20);
 		panel.add(dateTo);
 		
+		// create search button
 		JButton sButton = new JButton("Search");
 		sButton.setBounds(125, 180, 150, 20);
 		panel.add(sButton);
+		// action listener for search button
 		sButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String k = keywords.getText();
@@ -213,10 +243,12 @@ public class DefaultPanels extends JFrame {
 			    if (dt.length() != 0)
 			    	dateTo = LocalDate.parse(dt, TwitterSearch.formatter);
 			    if (dateFrom != null && dateTo != null) {
+			    	// check for proper date interval
 			    	if (dateTo.isBefore(dateFrom)) 
 			    		JOptionPane.showMessageDialog(panel, "Date To cannot be before Date From, please search again");
 			    }
 				else {
+					// create search object
 					Search s = new Search();
 				    s.setKeywords(k.split(" "));
 				    s.setAuthors(a.split(" "));
@@ -224,6 +256,7 @@ public class DefaultPanels extends JFrame {
 				    s.setDateFrom(dateFrom);
 				    s.setDateTo(dateTo);
 					panel.setVisible(false);
+					// switch to search display panel
 					ArrayList<Post> results = s.search(Database.postDB);
 					JScrollPane searchDisplay = DefaultPanels.searchDisplay(frame, homepage, panel, results);
 					frame.getContentPane().add(searchDisplay);
@@ -231,9 +264,11 @@ public class DefaultPanels extends JFrame {
 				}
 			}
 		});
+		// create return to homepage button
 		JButton rButton = new JButton("Return to Homepage");
 		rButton.setBounds(100, 210, 200, 20);
 		panel.add(rButton);
+		// action listener for return to homepage button
 		rButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel.setVisible(false);
@@ -246,18 +281,22 @@ public class DefaultPanels extends JFrame {
 		return panel;
 	}
 	
+	// Displays posts corresponding to search
 	public static JScrollPane searchDisplay(JFrame frame, JPanel homepage, JPanel searchPanel, ArrayList<Post> posts) {
+		// instantiates main JPanel
 		JPanel panel = new JPanel();
 		GridLayout layout = new GridLayout(2,1);
 		layout.setVgap(10);
 		panel.setLayout(layout);
 		
+		// instantiates post JPanel
 		JPanel postPanel = new JPanel();
 		GridLayout postLayout = new GridLayout(0,1);
 		postLayout.setVgap(10);
 		postPanel.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
 		postPanel.setLayout(postLayout);
 		
+		// add posts to post panel
 		int i = 0;
 		for (i = 0; i < posts.size(); i++) {
 			JTextArea postText = new JTextArea(DefaultController.printPost(posts.get(i)));
@@ -265,36 +304,45 @@ public class DefaultPanels extends JFrame {
 			postPanel.add(postText);
 		}
 		
+		// display no matches message
 		if (posts.size() == 0) {
 			JTextArea postText = new JTextArea("No matches found");
 			postText.setEditable(false);
 			postPanel.add(postText);
 		}
 		
+		// create button panel
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(null);
 		
+		// create search again button
 		JButton sButton = new JButton("Search Again");
 		sButton.setBounds(100, 10, 150, 20);
 		buttonPanel.add(sButton);
 		
+		// create return to homepage button
 		JButton rButton = new JButton("Return to Homepage");
 		rButton.setBounds(75, 40, 200, 20);
 		buttonPanel.add(rButton);
 		
+		// combine panels
 		panel.add(postPanel);
 		panel.add(buttonPanel);
 		
+		// create scroll pane
 		JScrollPane scroll = new JScrollPane(panel);
 		
+		// action listener for search again button
 		sButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// return to search page
 				scroll.setVisible(false);
 				frame.getContentPane().add(searchPanel);
 				searchPanel.setVisible(true);
 			}
 		});
 		
+		// action listener for return to homepage button
 		rButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				scroll.setVisible(false);
